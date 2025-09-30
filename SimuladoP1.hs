@@ -123,3 +123,23 @@ mostra (Dupla x ys) = Left ys
 -- R.:  filter :: (a -> Bool) -> [a] -> [a]
 --      id :: b -> b => a = b, b = Bool => a = Bool
 --      portanto, (filter id) :: [Bool] -> [Bool]
+
+-- 5. Considere data () = () e complete:
+-- f1 :: (a,b) -> (b,a,a)
+f1 :: (a, b) -> (b, a, a)
+f1 (a, b) = (b, a, a)
+
+-- f2 :: a -> (a, a, a, ())
+f2 :: a -> (a, a, a, ())
+f2 a = (a, a, a, ())
+
+-- f3 :: Either a () -> Maybe a
+f3 :: Either a () -> Maybe a
+f3 (Left a) = Just a
+f3 (Right _) = Nothing
+
+f4 :: (a -> b) -> (b -> z) -> (a -> z)
+f4 f g = g . f
+
+f5 :: (a -> b) -> (c, a) -> (c, b)
+f5 g = fmap g -- pois f5 possui a mesma assinatura de fmap para o functor ((,) a)
